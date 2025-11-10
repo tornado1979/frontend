@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Next.js build output
+.next/
+
+# Environment files
+.env*
+
+# Generated files
+next-env.d.ts
+
+# Package manager lock files
+package-lock.json
+
+# Git
+.git/
+
+# Logs
+*.log
