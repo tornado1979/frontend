@@ -1,31 +1,22 @@
 'use client';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import { toast } from 'react-hot-toast';
 import { useAppStore } from '@/store';
 import type { UseSearch } from '@/types/useSearch';
 import type { Address } from '@/types/address';
 
-export const useSearch = (): UseSearch => {
+export const useSearch = (debounceMs: number = 300): UseSearch => {
   const { isLoading, getAddresses } = useAppStore();
   const [searchTerm, setSearchTerm] = useState<string | null>(null);
   const [addresses, setAddresses] = useState<Address[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
+  const debounceTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleInputChange = useCallback(
-    async (event: React.ChangeEvent<HTMLInputElement>) => {
-      const value = event.target.value;
-      setSearchTerm(value);
-
-      if (!value || value.length < 3) {
-        setAddresses([]);
-        setShowDropdown(false);
-        setError(null);
-        return;
-      }
-
+  const performSearch = useCallback(
+    async (searchValue: string) => {
       try {
-        const response = await getAddresses(value);
+        const response = await getAddresses(searchValue);
 
         if (response.success && response.data) {
           setAddresses(response.data);
@@ -50,8 +41,38 @@ export const useSearch = (): UseSearch => {
     [getAddresses]
   );
 
+  const handleInputChange = useCallback(
+    async (event: React.ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value;
+      setSearchTerm(value);
+
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+
+      if (!value || value.length < 3) {
+        setAddresses([]);
+        setShowDropdown(false);
+        setError(null);
+        return;
+      }
+
+      debounceTimeoutRef.current = setTimeout(() => {
+        performSearch(value);
+      }, debounceMs);
+    },
+    [debounceMs, performSearch]
+  );
+
+  useEffect(() => {
+    return () => {
+      if (debounceTimeoutRef.current) {
+        clearTimeout(debounceTimeoutRef.current);
+      }
+    };
+  }, []);
+
   const handleItemSelect = useCallback((item: Address) => {
-    console.log('item selected:', item);
     setSearchTerm(`${item.street}, ${item.postNumber}, ${item.city}`);
     setShowDropdown(false);
   }, []);

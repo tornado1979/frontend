@@ -14,11 +14,12 @@ export default function Home() {
     clearInputValue,
   } = useSearch();
 
-  console.log('Addresses:', addresses);
   return (
     <div className='flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black'>
-      <main className='flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start'>
-        Display the autocomplete component here
+      <main className='flex min-h-screen w-full max-w-3xl flex-col items-center justify-start py-32 px-16 bg-white dark:bg-black sm:items-start gap-5'>
+        <h2 className='text-xl font-semibold mb-6 text-gray-800 dark:text-gray-200'>
+          Search for an Address
+        </h2>
         <Autocomplete
           searchTerm={searchTerm}
           clearInputValue={clearInputValue}
