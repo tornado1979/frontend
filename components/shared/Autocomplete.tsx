@@ -65,6 +65,12 @@ export const Autocomplete: FC<Props> = ({
         placeholder={placeholder}
         value={searchTerm || ''}
         onChange={handleInputChange}
+        onKeyDown={e => {
+          if (e.key === 'Escape') {
+            setShowDropdown(false);
+            inputRef.current?.blur();
+          }
+        }}
         required
       />
 
