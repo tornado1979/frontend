@@ -1,5 +1,5 @@
 'use client';
-import { Autocomplete } from '@/components/shared/Autocomplete';
+import { Autocomplete } from '@/components/shared/autocomplete/Autocomplete';
 import { useSearch } from '@/hooks/useSearch';
 
 export default function Home() {

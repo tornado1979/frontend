@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
-import { Autocomplete } from '@/components/shared/Autocomplete';
+import { Autocomplete } from '@/components/shared/autocomplete/Autocomplete';
 import { mockAddresses, defaultProps } from '@/__tests__/constants';
 
 describe('Autocomplete Component Snapshots', () => {

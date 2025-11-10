@@ -76,6 +76,51 @@ describe('AppStore Integration Tests', () => {
     });
   });
 
+  it('should handle API success:false response with missing error message', async () => {
+    const mockFailureResponse = {
+      data: {
+        success: false,
+        message: 'API Error',
+      },
+    };
+    mockedAxiosGet.mockResolvedValueOnce(mockFailureResponse);
+
+    const { result } = renderHook(() => useAppStore());
+
+    let response;
+    await act(async () => {
+      response = await result.current.getAddresses('InvalidQuery');
+    });
+
+    expect(response).toEqual({
+      success: false,
+      error: 'Failed to fetch addresses',
+      message: 'API Error',
+    });
+    expect(result.current.success).toBe(false);
+    expect(result.current.error).toBe('Failed to fetch addresses');
+  });
+
+  it('should handle non-Error thrown values', async () => {
+    // The 'error' in the catch block, is not intance of Error object
+    const nonErrorValue = 'String error thrown';
+    mockedAxiosGet.mockRejectedValueOnce(nonErrorValue);
+
+    const { result } = renderHook(() => useAppStore());
+
+    let response;
+    await act(async () => {
+      response = await result.current.getAddresses('TestQuery');
+    });
+
+    expect(response).toEqual({
+      success: false,
+      error: 'Failed to fetch addresses',
+    });
+    expect(result.current.success).toBe(false);
+    expect(result.current.error).toBe('Failed to fetch addresses');
+  });
+
   it('should manage loading states correctly', async () => {
     const mockResponse = mockApiResponse.success([], 'No addresses found');
     mockedAxiosGet.mockResolvedValueOnce(mockResponse);

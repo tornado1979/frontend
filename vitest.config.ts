@@ -21,6 +21,7 @@ export default defineConfig({
         '**/*.config.*',
         '**/coverage/**',
         '**/.next/**',
+        '**/index.ts', // Exclude barrel exports
       ],
     },
   },

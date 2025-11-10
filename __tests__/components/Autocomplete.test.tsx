@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { Autocomplete } from '@/components/shared/Autocomplete';
+import { Autocomplete } from '@/components/shared/autocomplete/Autocomplete';
 import { mockAddresses, defaultProps } from '@/__tests__/constants';
 
 describe('Autocomplete Component', () => {

@@ -21,7 +21,7 @@ exports[`Autocomplete Component Snapshots > should match snapshot - dropdown wit
   />
   <button
     aria-label="Clear text"
-    class="absolute top-4 right-3 transform focus:text-gray-600 transition-colors duration-200 cursor-pointer"
+    class="transform focus:text-gray-600 transition-colors duration-200 cursor-pointer absolute top-4 right-3 "
     type="button"
   >
     <img
@@ -110,13 +110,9 @@ exports[`Autocomplete Component Snapshots > should match snapshot - loading stat
     value="Oslo"
   />
   <div
-    class="absolute top-4 right-3 z-20"
-  >
-    <div
-      aria-label="Loading"
-      class="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"
-      role="status"
-    />
-  </div>
+    aria-label="Loading"
+    class="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent absolute top-4 right-3 z-20"
+    role="status"
+  />
 </div>
 `;
