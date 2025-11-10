@@ -11,6 +11,7 @@ type Props = {
   handleInputChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   items: Address[];
   renderItem: (item: Address) => React.ReactNode;
+  isLoading?: boolean;
 };
 
 export const Autocomplete: FC<Props> = ({
@@ -22,6 +23,7 @@ export const Autocomplete: FC<Props> = ({
   handleInputChange,
   items,
   renderItem,
+  isLoading = false,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const searchInputnRef = useRef<HTMLDivElement>(null);
@@ -74,7 +76,11 @@ export const Autocomplete: FC<Props> = ({
         required
       />
 
-      {searchTerm && (
+      {isLoading && searchTerm ? (
+        <div className='absolute top-4 right-3 z-20'>
+          <div className='animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent'></div>
+        </div>
+      ) : searchTerm ? (
         <button
           type='button'
           onClick={clearInputValue}
@@ -88,7 +94,7 @@ export const Autocomplete: FC<Props> = ({
             height={20}
           />
         </button>
-      )}
+      ) : null}
 
       {/* Dropdown */}
       {showDropdown && items && items.length > 0 && (

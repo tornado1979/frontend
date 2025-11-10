@@ -14,14 +14,6 @@ export default function Home() {
     clearInputValue,
   } = useSearch();
 
-  if (isLoading) {
-    return (
-      <div className='flex min-h-screen items-center justify-center'>
-        <div>Loading addresses...</div>
-      </div>
-    );
-  }
-
   console.log('Addresses:', addresses);
   return (
     <div className='flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black'>
@@ -35,6 +27,7 @@ export default function Home() {
           handleItemSelect={handleItemSelect}
           handleInputChange={handleInputChange}
           items={addresses}
+          isLoading={isLoading}
           renderItem={address => (
             <>
               <div className='font-medium'>{address.street}</div>
