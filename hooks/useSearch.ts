@@ -75,7 +75,9 @@ export const useSearch = (debounceMs: number = 300): UseSearch => {
   }, []);
 
   const handleItemSelect = useCallback((item: Address) => {
-    toast.success(`Selected address: ${item.street}`);
+    toast.success(
+      `Selected address: ${item.street}, ${item.postNumber}, ${item.city}`
+    );
     setSearchTerm(`${item.street}, ${item.postNumber}, ${item.city}`);
     setShowDropdown(false);
   }, []);

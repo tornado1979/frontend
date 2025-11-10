@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`useSearch Hook Snapshots > should match snapshot - after search term change 1`] = `
+{
+  "addresses": [],
+  "error": null,
+  "isLoading": false,
+  "searchTerm": "Oslo",
+  "showDropdown": false,
+}
+`;
+
+exports[`useSearch Hook Snapshots > should match snapshot - initial state 1`] = `
+{
+  "addresses": [],
+  "error": null,
+  "isLoading": false,
+  "searchTerm": null,
+  "showDropdown": false,
+}
+`;

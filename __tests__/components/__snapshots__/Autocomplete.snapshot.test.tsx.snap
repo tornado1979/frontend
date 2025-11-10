@@ -1,0 +1,122 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Autocomplete Component Snapshots > should match snapshot - dropdown with items 1`] = `
+<div
+  class="relative w-full mb-4"
+>
+  <img
+    alt="Search icon"
+    class="absolute left-3 top-4 w-5 h-5 text-gray-400 pointer-events-none z-10"
+    height="20"
+    src="/icons/magnifying-glass.svg"
+    width="20"
+  />
+  <input
+    class="w-full pl-10 pr-10 p-3 border border-gray-200 rounded-lg focus:ring-2"
+    id="address-search"
+    placeholder="Search address"
+    required=""
+    type="text"
+    value="Oslo"
+  />
+  <button
+    aria-label="Clear text"
+    class="absolute top-4 right-3 transform focus:text-gray-600 transition-colors duration-200 cursor-pointer"
+    type="button"
+  >
+    <img
+      alt="clear text"
+      height="20"
+      src="/icons/close.svg"
+      width="20"
+    />
+  </button>
+  <div
+    class="flex flex-col w-full z-10 mt-1 bg-gray-00 rounded-lg shadow-lg max-h-60 overflow-auto"
+  >
+    <div
+      class="p-3 hover:bg-gray-50 cursor-pointer border-b border-dashed border-gray-50 last:border-b-0"
+    >
+      <div>
+        <div>
+          Rodeløkka Postboks 6500-6599
+        </div>
+        <div>
+          501
+        </div>
+        <div>
+          OSLO
+        </div>
+      </div>
+    </div>
+    <div
+      class="p-3 hover:bg-gray-50 cursor-pointer border-b border-dashed border-gray-50 last:border-b-0"
+    >
+      <div>
+        <div>
+          Rodeløkka
+        </div>
+        <div>
+          1778
+        </div>
+        <div>
+          HALDEN
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Autocomplete Component Snapshots > should match snapshot - empty state 1`] = `
+<div
+  class="relative w-full mb-4"
+>
+  <img
+    alt="Search icon"
+    class="absolute left-3 top-4 w-5 h-5 text-gray-400 pointer-events-none z-10"
+    height="20"
+    src="/icons/magnifying-glass.svg"
+    width="20"
+  />
+  <input
+    class="w-full pl-10 pr-10 p-3 border border-gray-200 rounded-lg focus:ring-2"
+    id="address-search"
+    placeholder="Search address"
+    required=""
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`Autocomplete Component Snapshots > should match snapshot - loading state 1`] = `
+<div
+  class="relative w-full mb-4"
+>
+  <img
+    alt="Search icon"
+    class="absolute left-3 top-4 w-5 h-5 text-gray-400 pointer-events-none z-10"
+    height="20"
+    src="/icons/magnifying-glass.svg"
+    width="20"
+  />
+  <input
+    class="w-full pl-10 pr-10 p-3 border border-gray-200 rounded-lg focus:ring-2"
+    id="address-search"
+    placeholder="Search address"
+    required=""
+    type="text"
+    value="Oslo"
+  />
+  <div
+    class="absolute top-4 right-3 z-20"
+  >
+    <div
+      aria-label="Loading"
+      class="animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent"
+      role="status"
+    />
+  </div>
+</div>
+`;
