@@ -78,7 +78,11 @@ export const Autocomplete: FC<Props> = ({
 
       {isLoading && searchTerm ? (
         <div className='absolute top-4 right-3 z-20'>
-          <div className='animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent'></div>
+          <div
+            className='animate-spin rounded-full h-4 w-4 border-2 border-blue-500 border-t-transparent'
+            role='status'
+            aria-label='Loading'
+          ></div>
         </div>
       ) : searchTerm ? (
         <button

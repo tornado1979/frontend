@@ -22,7 +22,9 @@ export const useSearch = (debounceMs: number = 300): UseSearch => {
           setAddresses(response.data);
           setShowDropdown(true);
           setError(null);
-          toast.success(`Found ${response.data.length} addresses`);
+          if (response.data.length > 0) {
+            toast.success(`Found ${response.data.length} addresses`);
+          }
         } else {
           setAddresses([]);
           setShowDropdown(false);
@@ -73,11 +75,13 @@ export const useSearch = (debounceMs: number = 300): UseSearch => {
   }, []);
 
   const handleItemSelect = useCallback((item: Address) => {
+    toast.success(`Selected address: ${item.street}`);
     setSearchTerm(`${item.street}, ${item.postNumber}, ${item.city}`);
     setShowDropdown(false);
   }, []);
 
   const clearInputValue = useCallback(() => {
+    toast.success('Cleared search input');
     setSearchTerm(null);
     setAddresses([]);
     setShowDropdown(false);
