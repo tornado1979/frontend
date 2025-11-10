@@ -1,4 +1,5 @@
 export type Address = {
+  $tsid: string;
   city: string;
   county: string;
   district: string;
