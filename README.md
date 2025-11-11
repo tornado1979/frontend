@@ -258,10 +258,32 @@ This implementation fully satisfies the technical requirements:
 
 3. **Set up environment variables:**
 
+   Rename `.env.example` to `.env`:
+
    ```bash
-   cp .env.example .env.local
-   # Edit .env.local with your API URL
+   cp .env.example .env
    ```
+
+   **Option A - Use Deployed Backend (Recommended):**
+
+   Edit `.env` and set the API URL to the deployed backend instance:
+
+   ```bash
+   NEXT_PUBLIC_API_URL=https://backend-tr57.onrender.com
+   ```
+
+   **Option B - Run Backend Locally:**
+
+   If you prefer to run the backend locally:
+   1. Clone the backend repository:
+      ```bash
+      git clone https://github.com/tornado1979/backend
+      ```
+   2. Follow the backend setup instructions: [Getting Started Guide](https://github.com/tornado1979/backend?tab=readme-ov-file#%EF%B8%8F-getting-started)
+   3. Keep the default local API URL in `.env`:
+      ```bash
+      NEXT_PUBLIC_API_URL=http://localhost:8080
+      ```
 
 4. **Start development server:**
 
